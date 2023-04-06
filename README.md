@@ -1,4 +1,4 @@
-# Runing automatic configuration scripts
+# Running Automatic Configuration Scripts
 
 ## 1. Neovim Configuration Installation
 1. Open a terminal and do `cd /dotfiles/scripts`
