@@ -16,14 +16,8 @@ if ! brew upgrade; then
 fi
 
 # Install required packages
-if ! brew install gettext unzip clang cmake; then
+if ! brew install cmake; then
     echo "Failed to install required packages" >&2
-    exit 1
-fi
-
-# Clone the dotfiles repository
-if ! git clone https://github.com/diegoandino/dotfiles.git ~/dotfiles; then
-    echo "Failed to clone dotfiles repository" >&2
     exit 1
 fi
 
