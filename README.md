@@ -1,3 +1,5 @@
+![Alt Text](https://user-images.githubusercontent.com/1448118/112658122-63a32c80-8e53-11eb-9797-71eb6176493e.gif)
+
 # Running Automatic Configuration Scripts
 These setup scripts are meant for barebone setups where a Linux or MacOS machine is yet to be (fully) setup and customized with Neovim or any other related tool.
 This makes it easier to install all the needed dependencies like CLang, CMake, Homebrew, unzip, etc.
