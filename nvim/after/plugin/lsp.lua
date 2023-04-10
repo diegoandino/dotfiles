@@ -5,7 +5,11 @@ lsp.preset("recommended")
 lsp.ensure_installed({
 'tsserver',
 'eslint',
+'gopls',
+'rust-analyzer',
 })
+
+require'lspconfig'.gopls.setup{}
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}

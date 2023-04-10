@@ -13,21 +13,34 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use { "ellisonleao/gruvbox.nvim" }
+-- markdown plugin
+-- install without yarn or npm
+use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+})
+use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use('theprimeagen/harpoon')
-  use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v2.x',
-  requires = {
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {                                      -- Optional
-      'williamboman/mason.nvim',
-      run = function()
-        pcall(vim.cmd, 'MasonUpdate')
-      end,
+use {
+    'neoclide/coc.nvim',
+    branch = 'release'
+}
+
+use { "ellisonleao/gruvbox.nvim" }
+use {'lervag/wiki.vim'}
+use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+use('theprimeagen/harpoon')
+use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    requires = {
+        -- LSP Support
+        {'neovim/nvim-lspconfig'},             -- Required
+        {                                      -- Optional
+        'williamboman/mason.nvim',
+        run = function()
+            pcall(vim.cmd, 'MasonUpdate')
+        end,
     },
     {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
@@ -36,5 +49,17 @@ return require('packer').startup(function(use)
     {'hrsh7th/cmp-nvim-lsp'}, -- Required
     {'L3MON4D3/LuaSnip'},     -- Required
   }
+}
+
+use({ 
+    "ggandor/leap.nvim",
+    config = function()
+        require("leap").add_default_mappings()
+    end
+})
+
+use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
 }
 end)
