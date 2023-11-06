@@ -39,3 +39,13 @@ vim.api.nvim_set_keymap('x', '<A-j>', ':move \'>+1<CR>gv', { noremap = true, sil
 -- Map the function to <leader>r
 vim.api.nvim_set_keymap('n', '<leader>r', ':call FindReplacePrompt()<CR>', { noremap = true, silent = true })
 
+
+-- In Visual mode, pressing Tab will indent the selection
+vim.api.nvim_set_keymap('v', '<Tab>', '>gv', {noremap = true, silent = true})
+-- In Visual mode, pressing Shift+Tab will un-indent the selection
+vim.api.nvim_set_keymap('v', '<S-Tab>', '<gv', {noremap = true, silent = true})
+
+-- In Normal mode, pressing Tab will indent the current line and stay on it
+vim.api.nvim_set_keymap('n', '<Tab>', '>>_', {noremap = true, silent = true})
+-- In Normal mode, pressing Shift+Tab will un-indent the current line and stay on it
+vim.api.nvim_set_keymap('n', '<S-Tab>', '<<_', {noremap = true, silent = true})
