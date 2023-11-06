@@ -62,4 +62,14 @@ use {
     "williamboman/mason.nvim",
     run = ":MasonUpdate" -- :MasonUpdate updates registry contents
 }
+
+use('fatih/vim-go')
+
+use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+}
+
 end)

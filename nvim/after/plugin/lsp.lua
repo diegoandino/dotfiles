@@ -6,7 +6,6 @@ lsp.ensure_installed({
 'tsserver',
 'eslint',
 'gopls',
-'rust-analyzer',
 })
 
 require'lspconfig'.gopls.setup{}
