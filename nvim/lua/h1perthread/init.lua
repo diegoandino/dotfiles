@@ -1,3 +1,4 @@
+require("h1perthread.lazy")
 require("h1perthread.remap")
 require("h1perthread.set")
 require("h1perthread.markdown_remap")
