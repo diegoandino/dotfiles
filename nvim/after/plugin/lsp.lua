@@ -16,7 +16,7 @@ lsp_zero.set_preferences({
     }
 })
 
-require('lspconfig').tsserver.setup({})
+require('lspconfig').ts_ls.setup({})
 require('mason').setup({})
 require('mason-lspconfig').setup({
   handlers = {

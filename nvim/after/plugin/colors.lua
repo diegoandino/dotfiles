@@ -21,7 +21,7 @@ function ColorMyPencils(color)
       palette_overrides = {},
       overrides = {},
       dim_inactive = false,
-      transparent_mode = false,
+      transparent_mode = true,
     })	
     color = color or "gruvbox"
 	vim.cmd.colorscheme(color)

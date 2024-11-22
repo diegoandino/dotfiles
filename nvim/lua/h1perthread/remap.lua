@@ -1,5 +1,9 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+--vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+-- Oil nvim
+vim.keymap.set("n", "<leader>pv", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<space>-", require("oil").toggle_float)
 
 -- Function to wrap symbols
 local function wrap_with(symbol, closing_symbol)
@@ -80,3 +84,5 @@ vim.api.nvim_set_keymap('n', '<S-Tab>', '<<_', {noremap = true, silent = true})
 
 -- Yank text into host clipboard using C-y
 vim.api.nvim_set_keymap('v', '<C-y>', '""+y', {noremap = true, silent = true})
+
+
