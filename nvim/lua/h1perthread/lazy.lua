@@ -22,58 +22,94 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 local plugins = {
-
+  {
+    'cpwrs/americano.nvim',
+    opts = {},
+    dependencies = {}
+  },
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  },  
+  {
+    "xero/miasma.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd("colorscheme miasma")
+    end,
+  },  
+  {
+      "goolord/alpha-nvim",
+      -- dependencies = { 'echasnovski/mini.icons' },
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      config = function()
+      local startify = require("alpha.themes.theta")
+      -- available: devicons, mini, default is mini
+      -- if provider not loaded and enabled is true, it will try to use another provider
+      startify.file_icons.provider = "devicons"
+      require("alpha").setup(
+        startify.config
+      )
+      end,
+    },
+    {
+      'MeanderingProgrammer/render-markdown.nvim',
+      opts = {},
+      dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+      -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    },
     {
         'nvim-telescope/telescope.nvim', version = '0.1.8',
-        dependencies = { {'nvim-lua/plenary.nvim'} }
+        dependencies = { {'nvim-lua/plenary.nvim'} },
+        
     },
-
     {
         'neoclide/coc.nvim',
         branch = 'release'
     },
-
     'ellisonleao/gruvbox.nvim',
-
     'lervag/wiki.vim',
-
     {   
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate'
     },
-
     {
         'ThePrimeagen/harpoon',
         branch = "harpoon2",
         dependencies = { {"nvim-lua/plenary.nvim"} }
     },
-
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-
     {'neovim/nvim-lspconfig'},
-
     {'hrsh7th/cmp-nvim-lsp'},
-
     {'hrsh7th/nvim-cmp'},
-
     {'L3MON4D3/LuaSnip'},
-
-    {
-        "ggandor/leap.nvim",
-        opts = {}
-    },
-
-    
     "williamboman/mason.nvim",
-
     'williamboman/mason-lspconfig.nvim',
-
     'fatih/vim-go',
-
     {
         'numToStr/Comment.nvim', opts = {}
     },
-
     {
         'folke/noice.nvim',
         --[[ config = function()

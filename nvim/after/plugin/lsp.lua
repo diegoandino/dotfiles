@@ -16,7 +16,11 @@ lsp_zero.set_preferences({
     }
 })
 
-require('lspconfig').tsserver.setup({})
+require('lspconfig').ts_ls.setup({})
+require('lspconfig').elixirls.setup({
+  cmd = { "/home/h1per/elixir-ls/release/language_server.sh" }
+})
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
   handlers = {
