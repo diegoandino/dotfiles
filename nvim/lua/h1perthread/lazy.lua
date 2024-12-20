@@ -23,6 +23,11 @@ vim.g.maplocalleader = "\\"
 
 local plugins = {
   {
+    'cpwrs/americano.nvim',
+    opts = {},
+    dependencies = {}
+  },
+  {
     'stevearc/oil.nvim',
     ---@module 'oil'
     ---@type oil.SetupOpts
@@ -49,55 +54,35 @@ local plugins = {
 
     {
         'nvim-telescope/telescope.nvim', version = '0.1.8',
-        dependencies = { {'nvim-lua/plenary.nvim'} }
+        dependencies = { {'nvim-lua/plenary.nvim'} },
+        
     },
-
     {
         'neoclide/coc.nvim',
         branch = 'release'
     },
-
     'ellisonleao/gruvbox.nvim',
-
     'lervag/wiki.vim',
-
     {   
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate'
     },
-
     {
         'ThePrimeagen/harpoon',
         branch = "harpoon2",
         dependencies = { {"nvim-lua/plenary.nvim"} }
     },
-
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-
     {'neovim/nvim-lspconfig'},
-
     {'hrsh7th/cmp-nvim-lsp'},
-
     {'hrsh7th/nvim-cmp'},
-
     {'L3MON4D3/LuaSnip'},
-
-    {
-        "ggandor/leap.nvim",
-        opts = {}
-    },
-
-    
     "williamboman/mason.nvim",
-
     'williamboman/mason-lspconfig.nvim',
-
     'fatih/vim-go',
-
     {
         'numToStr/Comment.nvim', opts = {}
     },
-
     {
         'folke/noice.nvim',
         --[[ config = function()
