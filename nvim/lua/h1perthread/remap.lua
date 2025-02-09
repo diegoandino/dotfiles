@@ -5,6 +5,10 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<space>-", require("oil").toggle_float)
 
+-- Notes nvim
+vim.keymap.set('n', '<leader>sn', require('h1perthread.notes').set_note, { desc = 'Set note at current line' })
+vim.keymap.set('n', '<leader>fn', '<cmd>Notes<cr>', { desc = 'Find notes' })
+
 -- Function to wrap symbols
 local function wrap_with(symbol, closing_symbol)
     -- Insert the symbol at the cursor position
