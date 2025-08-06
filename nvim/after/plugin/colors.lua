@@ -1,5 +1,5 @@
 function Colorscheme()
-  require("catppuccin").load()
+  require("bamboo").load()
 end
 
 Colorscheme()

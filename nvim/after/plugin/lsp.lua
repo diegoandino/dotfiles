@@ -16,15 +16,13 @@ lsp_zero.set_preferences({
     }
 })
 
-require('lspconfig').ts_ls.setup({})
-require('mason').setup({})
-require('mason-lspconfig').setup({
-  handlers = {
-    function(server_name)
-      require('lspconfig')[server_name].setup({})
-    end,
-  },
-})
+require('mason').setup()
+require('mason-lspconfig').setup {
+  ensure_installed = {
+    "ts_ls",
+    "rust_analyzer"
+  }
+}
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()

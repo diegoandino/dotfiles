@@ -1,4 +1,4 @@
-local custom_theme = require'lualine.themes.dracula'
+local custom_theme = require'lualine.themes.codedark'
 
 -- Change the background of lualine_c section for normal mode
 -- custom_theme.normal.c.fg = '#112233'

@@ -23,6 +23,41 @@ vim.g.maplocalleader = "\\"
 
 local plugins = {
   {
+    'mluders/comfy-line-numbers.nvim'
+  },
+  {
+    'ribru17/bamboo.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('bamboo').setup {
+        style = 'multiplex',
+        transparent = true,
+        term_colors = true,
+        code_style = {
+          comments = { italic = false },
+          conditionals = { italic = false },
+          keywords = { italic = false },
+          functions = { italic = false },
+          namespaces = { italic = false },
+          parameters = { italic = false },
+          strings = { italic = false },
+          variables = { italic = false },
+        },
+      }
+      require('bamboo').load()
+    end,
+  },
+  {
+    'nvim-flutter/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = true,
+  },
+  {
     "folke/snacks.nvim",
     ---@type snacks.Config
     opts = {
@@ -202,8 +237,15 @@ local plugins = {
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/nvim-cmp'},
     {'L3MON4D3/LuaSnip'},
-    "williamboman/mason.nvim",
-    'williamboman/mason-lspconfig.nvim',
+    {
+      "mason-org/mason.nvim",
+      opts = {}
+    },
+    {
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+    },
     'fatih/vim-go',
     {
         'numToStr/Comment.nvim', opts = {}
@@ -226,3 +268,12 @@ local plugins = {
 local opts = {}
 
 require("lazy").setup(plugins, opts)
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
