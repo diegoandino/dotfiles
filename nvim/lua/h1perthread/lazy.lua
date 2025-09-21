@@ -23,6 +23,15 @@ vim.g.maplocalleader = "\\"
 
 local plugins = {
   {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' }, -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
+  {
     'mluders/comfy-line-numbers.nvim'
   },
   {
@@ -89,6 +98,17 @@ local plugins = {
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
     keys = {
+      {
+        "<leader>E",
+        function()
+          if require("trouble").is_open() then
+            require("trouble").next({ skip_groups = true, jump = true })
+          else
+            vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+          end
+        end,
+        desc = "Next error",
+      },
       {
         "<leader>xx",
         "<cmd>Trouble diagnostics toggle<cr>",
@@ -222,7 +242,6 @@ local plugins = {
         branch = 'release'
     },
     'ellisonleao/gruvbox.nvim',
-    'lervag/wiki.vim',
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate'
