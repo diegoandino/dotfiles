@@ -1,4 +1,4 @@
-theme = aura
+theme = custom-matrix
 
 font-family = JetBrains Mono
 font-size = 22
@@ -16,3 +16,10 @@ window-save-state = always
 background-opacity = 0.95
 
 font-feature=-calt
+keybind = shift+enter=text:\n
+
+clipboard-paste-protection = false
+
+quick-terminal-autohide = false
+quick-terminal-size = 100%,100%
+quick-terminal-keyboard-interactivity = exclusive
